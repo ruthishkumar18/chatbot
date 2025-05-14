@@ -1,15 +1,15 @@
+from flask import Flask, render_template, request, jsonify, redirect, session, url_for
+from chatbot_model import predict_intent
 import firebase_admin
 from firebase_admin import credentials, db
 
-from flask import Flask, render_template, request, jsonify
-from chatbot_model import predict_intent
-
 app = Flask(__name__)
+app.secret_key = '1816'  # 🔒 Change this in production
 
-# 🔑 Initialize Firebase
+# Firebase initialization (optional, for chat storage)
 cred = credentials.Certificate("serviceAccountKey.json")
 firebase_admin.initialize_app(cred, {
-    'databaseURL': 'https://collegechatbotdb-default-rtdb.firebaseio.com'  # 🔁 Replace with your actual project ID
+    'databaseURL': 'https://collegechatbotdb-default-rtdb.firebaseio.com/'
 })
 
 @app.route('/')
@@ -18,17 +18,38 @@ def home():
 
 @app.route('/get_response', methods=['POST'])
 def get_bot_response():
-    user_input = request.json['message']  # Use .json if sending JSON via JS/AJAX
+    user_input = request.form['message']
     response = predict_intent(user_input)
 
-    # 🔄 Save conversation to Firebase
+    # Optional: store conversation in Firebase
     ref = db.reference('chats')
-    ref.push({
-        'user': user_input,
-        'bot': response
-    })
+    ref.push({"user": user_input, "bot": response})
 
     return jsonify({'response': response})
 
-if __name__ == '__main__':
-    app.run(debug=True)
+# ✅ LOGIN ROUTE
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        # 🔒 Replace with database/Firebase check for production
+        if username == 'admin' and password == 'admin123':
+            session['user'] = username
+            return redirect('/admin')
+        else:
+            return "Invalid credentials"
+    return render_template("login.html")
+
+# ✅ ADMIN DASHBOARD
+@app.route('/admin')
+def admin():
+    if 'user' not in session:
+        return redirect('/login')
+    return render_template('admin.html')
+
+# ✅ LOGOUT
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect('/')
