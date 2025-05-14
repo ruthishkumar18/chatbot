@@ -4,3 +4,4 @@ nltk
 tensorflow
 numpy
 scikit-learn
+firebase-admin
