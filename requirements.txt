@@ -1,10 +1,6 @@
-<<<<<<< HEAD
-Flask==2.3.2gunicorn==21.2.0tensorflownltknumpyscikit-learn
-=======
-Flask==2.3.3
+Flask==2.3.2
 gunicorn==21.2.0
-firebase-admin==6.4.0
-numpy==1.24.4
-scikit-learn==1.3.2
-nltk==3.8.1
->>>>>>> 7caa3f68be9f01ce6c24b5279d06457746090020
+nltk
+tensorflow
+numpy
+scikit-learn
