@@ -1,0 +1,24 @@
+{
+  "intents": [
+    {
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey"],
+      "responses": ["Hello! How can I assist you about the college?"]
+    },
+    {
+      "tag": "admission",
+      "patterns": ["Tell me about admission", "How to apply?", "Admission process"],
+      "responses": ["The admission process involves filling out an online application, followed by a counseling session."]
+    },
+    {
+      "tag": "courses",
+      "patterns": ["What courses are available?", "List of courses", "Departments?"],
+      "responses": ["We offer B.Tech, M.Tech, MBA, and MCA across several departments."]
+    },
+    {
+      "tag": "goodbye",
+      "patterns": ["Bye", "Goodbye", "See you"],
+      "responses": ["Goodbye! Feel free to ask any time."]
+    }
+  ]
+}
