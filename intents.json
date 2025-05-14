@@ -1,65 +1,24 @@
 {
   "intents": [
     {
-      "intent": "greeting",
-      "patterns": [
-        "Hi",
-        "Hello",
-        "Good morning",
-        "Hey"
-      ],
-      "responses": [
-        "Hello! How can I help you?",
-        "Hi there! How can I assist you?"
-      ]
+      "tag": "greeting",
+      "patterns": ["Hi", "Hello", "Hey"],
+      "responses": ["Hello! How can I assist you about the college?"]
     },
     {
-      "intent": "admissions",
-      "patterns": [
-        "What are the admission requirements?",
-        "How can I apply for admission?",
-        "Tell me about the admission process."
-      ],
-      "responses": [
-        "To apply for admission, you need to fill out the online application form on our website.",
-        "You can apply by submitting your documents through our online portal."
-      ]
+      "tag": "admission",
+      "patterns": ["Tell me about admission", "How to apply?", "Admission process"],
+      "responses": ["The admission process involves filling out an online application, followed by a counseling session."]
     },
     {
-      "intent": "campus_facilities",
-      "patterns": [
-        "What facilities are available on campus?",
-        "Tell me about the campus facilities.",
-        "What are the amenities provided?"
-      ],
-      "responses": [
-        "Our campus has a library, gym, sports complex, and various student clubs.",
-        "We offer a variety of facilities including a cafeteria, a medical center, and a study lounge."
-      ]
+      "tag": "courses",
+      "patterns": ["What courses are available?", "List of courses", "Departments?"],
+      "responses": ["We offer B.Tech, M.Tech, MBA, and MCA across several departments."]
     },
     {
-      "intent": "academic_programs",
-      "patterns": [
-        "What programs do you offer?",
-        "Tell me about your academic programs.",
-        "What are the courses available?"
-      ],
-      "responses": [
-        "We offer various undergraduate and postgraduate programs in fields like Engineering, Science, Business, and Arts.",
-        "Our academic programs include Computer Science, Mechanical Engineering, and Business Administration."
-      ]
-    },
-    {
-      "intent": "fees_structure",
-      "patterns": [
-        "What is the fee structure?",
-        "How much are the tuition fees?",
-        "Can you tell me about the fee structure?"
-      ],
-      "responses": [
-        "The tuition fees depend on the program. Please visit our website for detailed fee information.",
-        "Fees vary by program. You can find the exact breakdown on our admissions page."
-      ]
+      "tag": "goodbye",
+      "patterns": ["Bye", "Goodbye", "See you"],
+      "responses": ["Goodbye! Feel free to ask any time."]
     }
   ]
 }
